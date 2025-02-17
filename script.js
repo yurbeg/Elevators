@@ -42,3 +42,24 @@ function callElevator(floor) {
 
 
 }
+// gasStation
+function gasStation(strArr){
+  let [n,...station] = strArr
+  let sum = 0
+  let f = true
+  let index
+  station.forEach((val)=>{
+    let [g,c] = val.split(":").map(Number)
+    sum += g - c
+    if (g - c > 0 && f){
+      index = strArr.indexOf(val)
+      f = false
+    }
+  })
+  if(sum < 0){
+    return "impossible"
+  }
+  return index
+}
+
+console.log(gasStation(["4","1:2","2:2","0:1","3:1"]))
